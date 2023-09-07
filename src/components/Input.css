@@ -32,4 +32,18 @@ div.form form button {
   padding: 10px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 674px) {
+  div.form form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  div.form form label {
+    margin-bottom: 10px;
+  }
+  div.form form input {
+    margin-bottom: 10px;
+  }
 }/*# sourceMappingURL=Input.css.map */

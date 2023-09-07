@@ -38,3 +38,24 @@ div.form {
     }
   }
 }
+
+@media screen and (max-width: 674px) {
+  div.form {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+        margin-bottom: 10px;
+      }
+
+      input {
+        margin-bottom: 10px;
+      }
+
+      button {
+      }
+    }
+  }
+}
