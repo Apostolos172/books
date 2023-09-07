@@ -22,18 +22,23 @@ const deleteABook = async (bookId) => {
 
 const editABook = async (bookId, editedBook) => {
   let url = `http://localhost:3000/books/${bookId}`;
-  console.log(bookId, editedBook, url);
-//   console.log(10, {
-//     title: "Peac",
-//     author: "Leo Tolstoy",
-//     id: 10,
-//   });
+  //console.log(bookId, editedBook, url);
   const headers = {
     "Content-Type": "application/json",
   };
   const response = await axios.put(url, editedBook, { headers });
-  console.log(response);
+  //console.log(response);
   return response;
 };
 
-export { getAllBooks, deleteABook, editABook };
+const addABook = async (title) => {
+  let url = `http://localhost:3000/books`;
+  let headers = { "Content-Type": "application/json" };
+  let newBook = {
+    title: title,
+  };
+  const response = await axios.post(url, newBook, { headers });
+  return response;
+};
+
+export { getAllBooks, deleteABook, editABook, addABook };

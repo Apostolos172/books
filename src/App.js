@@ -2,19 +2,23 @@ import "./App.css";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import Input from "./components/Input";
-import { getAllBooks, deleteABook, editABook } from "./fetch";
+import { getAllBooks, deleteABook, editABook, addABook } from "./fetch";
 import BooksList from "./components/BooksList";
 
 function App() {
   const [books, setBooks] = useState([]);
 
-  const onSubmit = (text) => {
-    console.log(text);
-  };
-
   const fetchData = async () => {
     const booksFromApi = await getAllBooks();
     return booksFromApi;
+  };
+
+  const onSubmit = async (text) => {
+    console.log(text);
+    await addABook(text);
+    fetchData().then((books) => {
+      setBooks(books);
+    });
   };
 
   const deleteBook = async (id) => {

@@ -10,6 +10,7 @@ const Input = ({ onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(text);
+    setText("");
   };
 
   return (
