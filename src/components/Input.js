@@ -1,8 +1,12 @@
 import { useState } from "react";
 import "./Input.css";
+import { useContext } from "react";
+import BooksContext from "../context/BooksContext";
+import useBooksContext from "../hooks/useBooksContext";
 
-const Input = ({ onSubmit }) => {
+const Input = ({}) => {
   const [text, setText] = useState("");
+  const { onSubmit } = useBooksContext();
   const onChange = (e) => {
     let newInput = e.target.value;
     setText(newInput);
