@@ -2,7 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
 import Input from "./components/Input";
-import { getAllBooks, deleteABook, editABook } from "./fetch";
+import { getAllBooks, deleteABook } from "./fetch";
 import BooksList from "./components/BooksList";
 
 function App() {
@@ -25,26 +25,12 @@ function App() {
     return bookDeleted;
   };
 
-  const editBook = async (id, editedBook) => {
-    //console.log(id, editedBook);
-    const response = await editABook(id, editedBook);
-    fetchData().then((books) => {
-      setBooks(books);
-    });
-    return response;
-  };
-
   useEffect(() => {
     fetchData().then((books) => {
       setBooks(books);
       console.log(books);
     });
     //for testing purposes
-    // editBook(10, {
-    //   title: "Peas",
-    //   author: "Leo Tolstoy",
-    //   id: 10,
-    // });
     //let book = 17;
     //deleteBook(book).then((book) => console.log(book));
   }, []);
@@ -53,9 +39,7 @@ function App() {
     <div className="App">
       <Header></Header>
       <Input onSubmit={onSubmit}></Input>
-      <BooksList onDelete={deleteBook} onEdit={editBook}>
-        {books}
-      </BooksList>
+      <BooksList onDelete={deleteBook}>{books}</BooksList>
     </div>
   );
 }
