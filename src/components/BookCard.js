@@ -3,11 +3,13 @@ import { AiFillDelete } from "react-icons/ai";
 import EditBook from "./EditBook";
 import "./BookCard.css";
 import { useState } from "react";
+import useBooksContext from "../hooks/useBooksContext";
 
-const BookCard = ({ children, onDelete, onEdit }) => {
+const BookCard = ({ children }) => {
   const [editMode, setEditMode] = useState(false);
+  const { deleteBook } = useBooksContext();
   const deleteHandle = () => {
-    onDelete(children.id);
+    deleteBook(children.id);
   };
   const editHandle = () => {
     setEditMode((currentEditMode) => {
@@ -25,7 +27,7 @@ const BookCard = ({ children, onDelete, onEdit }) => {
         ></img>
       </div>
       {editMode ? (
-        <EditBook editBook={onEdit} editModeF={setEditMode}>
+        <EditBook editModeF={setEditMode}>
           {children}
         </EditBook>
       ) : (

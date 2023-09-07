@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./EditBook.css";
+import useBooksContext from "../hooks/useBooksContext";
 
-const EditBook = ({ children, editBook, editModeF }) => {
+const EditBook = ({ children, editModeF }) => {
   const [text, setText] = useState(children.title);
+  const { editBook } = useBooksContext();
   const onChange = (e) => {
     setText(e.target.value);
   };

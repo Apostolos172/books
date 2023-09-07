@@ -1,42 +1,12 @@
 import "./App.css";
 import Header from "./components/Header";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Input from "./components/Input";
-import { getAllBooks, deleteABook, editABook, addABook } from "./fetch";
 import BooksList from "./components/BooksList";
+import useBooksContext from "./hooks/useBooksContext";
 
 function App() {
-  const [books, setBooks] = useState([]);
-
-  const fetchData = async () => {
-    const booksFromApi = await getAllBooks();
-    return booksFromApi;
-  };
-
-  const onSubmit = async (text) => {
-    console.log(text);
-    await addABook(text);
-    fetchData().then((books) => {
-      setBooks(books);
-    });
-  };
-
-  const deleteBook = async (id) => {
-    const bookDeleted = await deleteABook(id);
-    fetchData().then((books) => {
-      setBooks(books);
-    });
-    return bookDeleted;
-  };
-
-  const editBook = async (id, editedBook) => {
-    //console.log(id, editedBook);
-    const response = await editABook(id, editedBook);
-    fetchData().then((books) => {
-      setBooks(books);
-    });
-    return response;
-  };
+  const { books, fetchData, setBooks } = useBooksContext();
 
   useEffect(() => {
     fetchData().then((books) => {
@@ -56,10 +26,8 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-      <Input onSubmit={onSubmit}></Input>
-      <BooksList onDelete={deleteBook} onEdit={editBook}>
-        {books}
-      </BooksList>
+      <Input></Input>
+      <BooksList>{books}</BooksList>
     </div>
   );
 }
