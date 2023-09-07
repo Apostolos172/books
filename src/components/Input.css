@@ -1,0 +1,35 @@
+div.form {
+  background-color: teal;
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  border-top: 10px solid bisque;
+  z-index: 1;
+}
+div.form form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+div.form form label {
+  margin-right: 15px;
+  color: antiquewhite;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+div.form form input {
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 20px;
+  margin-right: 15px;
+}
+div.form form button {
+  background-color: white;
+  font-family: sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}/*# sourceMappingURL=Input.css.map */
